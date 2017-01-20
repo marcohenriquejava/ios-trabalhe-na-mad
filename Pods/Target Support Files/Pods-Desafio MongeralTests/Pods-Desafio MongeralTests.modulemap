@@ -1,0 +1,6 @@
+framework module Pods_Desafio_MongeralTests {
+  umbrella header "Pods-Desafio MongeralTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
