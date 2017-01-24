@@ -14,6 +14,7 @@ class Owner: Mappable {
 
     
     var name: String?
+    var login: String?
     var avatarUrl: String?
     var url: String?
 
@@ -22,6 +23,7 @@ class Owner: Mappable {
     
     func mapping(map: Map) {
         name <- map["name"]
+        login <- map["login"]
         avatarUrl <- map["avatar_url"]
         url <- map["url"]
     }
@@ -30,7 +32,7 @@ class Owner: Mappable {
 }
 
 
-class OwnerObjectModel {
+class OwnerViewModel {
     private var owner: Owner
     
     
@@ -38,6 +40,9 @@ class OwnerObjectModel {
         self.owner = owner
     }
     
+    var login:String {
+        return owner.login ?? ""
+    }
     
     var name:String {
         return owner.name ?? ""

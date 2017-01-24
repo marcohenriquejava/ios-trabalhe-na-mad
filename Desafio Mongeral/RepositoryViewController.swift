@@ -13,12 +13,13 @@ class RepositoryViewController: UITableViewController {
     
     
     let CELL_REPOSITORY = "cellRepository"
-  
-    
     
     var searchResultRepo: SearchResultRepository?
     
-     var items = [RepositoryObjectModel]()
+     var listItemsRepository = [RepositoryViewModel]()
+    
+    
+    var cellSelectedRepo: RepositoryViewModel?
     
     
     override func viewDidLoad() {
@@ -38,38 +39,58 @@ class RepositoryViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return listItemsRepository.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_REPOSITORY, for: indexPath) as! RepositoryCell
         
-        let repository = items[indexPath.item]
+        let repository = listItemsRepository[indexPath.item]
         cell.fill(with: repository)
         
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.cellSelectedRepo = listItemsRepository[indexPath.item]
+        //self.performSegue(withIdentifier: "showPullRequest", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPullRequest" {
+            
+            let indexPath = self.tableView.indexPathForSelectedRow
+            
+            
+            
+            let destination = segue.destination as! PullRequestViewController
+          
+            destination.urlPullRequest = self.listItemsRepository[(indexPath?.item)!].pullsUrlString
+            
+        }
+    }
+    
     
     func prepareObjectView() {
-        guard let resultList = searchResultRepo?.items else {
-            print(">> Erro ao tentar montar os resultados.")
+        guard let resultListRepo = searchResultRepo?.items else {
+            NSLog(" Erro ao tentar constuir o resultado para a tela.")
             return
         }
         
-        for resultItem in resultList {
-            let itemVM = RepositoryObjectModel(repository: resultItem)
-            self.items.append(itemVM)
+        for resultItemRepo in resultListRepo {
+            let itemVM = RepositoryViewModel(repository: resultItemRepo)
+            self.listItemsRepository.append(itemVM)
         }
         
         self.tableView.reloadData()
     }
     
+    
     func getListRepository() {
     
     
-        GitHubClientRepository.searchRepositories( completion: { result in
+        GitHubClientRepository.getRepositories( completion: { result in
             guard let result = result else {
                 self.searchResultRepo = nil
                 return

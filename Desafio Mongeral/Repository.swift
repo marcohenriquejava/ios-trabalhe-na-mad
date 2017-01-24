@@ -41,42 +41,42 @@ class Repository: Mappable {
 
 
 
-class RepositoryObjectModel {
-    private var repo: Repository
+class RepositoryViewModel {
+    private var repository: Repository
     
     init(repository: Repository) {
-        self.repo = repository
+        self.repository = repository
     }
     
     
     var description:String {
-        return repo.descRepository ?? ""
+        return repository.descRepository ?? ""
     }
     
     var name:String {
-        return repo.nameRepository ?? ""
+        return repository.nameRepository ?? ""
     }
     
     var fullname:String {
-        return repo.fullNameRepository ?? ""
+        return repository.fullNameRepository ?? ""
     }
     
     var stars:String {
-        return repo.countStars?.description ?? "0"
+        return repository.countStars?.description ?? "0"
     }
     
     var forks:String {
-        return repo.countForks?.description ?? "0"
+        return repository.countForks?.description ?? "0"
     }
     
-    var pullsURLString:String? {
-        return repo.pullsUrl?.replacingOccurrences(of: "{/number}", with: "") ?? ""
+    var pullsUrlString:String? {
+        return repository.pullsUrl?.replacingOccurrences(of: "{/number}", with: "") ?? ""
     }
     
-    var owner:OwnerObjectModel? {
-        guard let owner = repo.owner else {
+    var owner:OwnerViewModel? {
+        guard let owner = repository.owner else {
             return nil
         }
-        return OwnerObjectModel(owner: owner)
+        return OwnerViewModel(owner: owner)
     }
 }

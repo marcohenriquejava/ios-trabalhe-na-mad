@@ -21,10 +21,10 @@ class RepositoryCell: UITableViewCell {
     
     
     
-    var repo: RepositoryObjectModel!
+    var repo: RepositoryViewModel!
     
     
-    func fill(with repo: RepositoryObjectModel) {
+    func fill(with repo: RepositoryViewModel) {
         self.repo = repo
         
         
@@ -42,7 +42,7 @@ class RepositoryCell: UITableViewCell {
         
         labelNameAuthor.text = owner.name
         avatarImage.image = util.downloaderImage(url: owner.avatarUrl)
-        
+        avatarImage.layer.cornerRadius = 10
         
     }
     
