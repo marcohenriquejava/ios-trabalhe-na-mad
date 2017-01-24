@@ -23,6 +23,7 @@ class PullRequestViewController: UITableViewController {
      override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.getPullRequest()
         
     }
