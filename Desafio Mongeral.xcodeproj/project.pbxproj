@@ -24,6 +24,8 @@
 		B23061D41E2ED7AA006C5F89 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23061D31E2ED7AA006C5F89 /* RepositoryCell.swift */; };
 		B24BBE431E2EEBDD0047ECF3 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24BBE421E2EEBDD0047ECF3 /* Owner.swift */; };
 		B24BBE461E2EF8E30047ECF3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24BBE451E2EF8E30047ECF3 /* Util.swift */; };
+		B28CBCEE1E36EB0C00A362A6 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28CBCED1E36EB0C00A362A6 /* Helpers.swift */; };
+		B2A046D81E371E3E009A7131 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2A046D71E371E3E009A7131 /* Images.xcassets */; };
 		B2CAC5561E32359200D51FCD /* PullRequestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CAC5551E32359200D51FCD /* PullRequestRepository.swift */; };
 		B2D455C41E33AA35007DE0B5 /* PullRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D455C31E33AA35007DE0B5 /* PullRequestViewController.swift */; };
 		B2D455C61E33AD33007DE0B5 /* PullRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D455C51E33AD33007DE0B5 /* PullRequestCell.swift */; };
@@ -75,6 +77,8 @@
 		B23061D31E2ED7AA006C5F89 /* RepositoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		B24BBE421E2EEBDD0047ECF3 /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		B24BBE451E2EF8E30047ECF3 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		B28CBCED1E36EB0C00A362A6 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		B2A046D71E371E3E009A7131 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B2CAC5551E32359200D51FCD /* PullRequestRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestRepository.swift; sourceTree = "<group>"; };
 		B2D455C31E33AA35007DE0B5 /* PullRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestViewController.swift; sourceTree = "<group>"; };
 		B2D455C51E33AD33007DE0B5 /* PullRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestCell.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 				B23061A61E2ED326006C5F89 /* LaunchScreen.storyboard */,
 				B23061A91E2ED326006C5F89 /* Info.plist */,
 				B23061A11E2ED326006C5F89 /* Desafio_Mongeral.xcdatamodeld */,
+				B2A046D71E371E3E009A7131 /* Images.xcassets */,
 			);
 			path = "Desafio Mongeral";
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				B24BBE451E2EF8E30047ECF3 /* Util.swift */,
+				B28CBCED1E36EB0C00A362A6 /* Helpers.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B23061A81E2ED326006C5F89 /* LaunchScreen.storyboard in Resources */,
+				B2A046D81E371E3E009A7131 /* Images.xcassets in Resources */,
 				B23061A51E2ED326006C5F89 /* Assets.xcassets in Resources */,
 				B23061A01E2ED326006C5F89 /* Main.storyboard in Resources */,
 			);
@@ -520,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B23061CD1E2ED385006C5F89 /* RepositoryViewController.swift in Sources */,
+				B28CBCEE1E36EB0C00A362A6 /* Helpers.swift in Sources */,
 				B230619D1E2ED326006C5F89 /* ViewController.swift in Sources */,
 				B2CAC5561E32359200D51FCD /* PullRequestRepository.swift in Sources */,
 				B2220D511E2EEA8C00A38523 /* SearchResultRepository.swift in Sources */,
@@ -689,6 +697,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.mongeral.Desafio-Mongeral";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -702,6 +711,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.mongeral.Desafio-Mongeral";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

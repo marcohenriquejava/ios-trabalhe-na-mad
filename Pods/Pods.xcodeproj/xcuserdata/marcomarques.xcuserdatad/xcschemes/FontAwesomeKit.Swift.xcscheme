@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "08D62A8D5AC9BF5802D808156B6DCDD2"
-               BuildableName = "Pods_Desafio_Mongeral.framework"
-               BlueprintName = "Pods-Desafio Mongeral"
+               BlueprintIdentifier = "F9BC3A53522F7F81280ADF2480533C6E"
+               BuildableName = "FontAwesomeKit_Swift.framework"
+               BlueprintName = "FontAwesomeKit.Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "08D62A8D5AC9BF5802D808156B6DCDD2"
-            BuildableName = "Pods_Desafio_Mongeral.framework"
-            BlueprintName = "Pods-Desafio Mongeral"
+            BlueprintIdentifier = "F9BC3A53522F7F81280ADF2480533C6E"
+            BuildableName = "FontAwesomeKit_Swift.framework"
+            BlueprintName = "FontAwesomeKit.Swift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

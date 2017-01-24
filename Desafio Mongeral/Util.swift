@@ -12,8 +12,6 @@ import UIKit
 
 class Util: NSObject {
     
-    
-    
     func downloaderImage(url: String?) -> UIImage? {
         guard let url = url,
             let imageUrl = NSURL(string: url),
@@ -22,7 +20,6 @@ class Util: NSObject {
         
         return UIImage(data: data as Data)
     }
-    
     
     
 }

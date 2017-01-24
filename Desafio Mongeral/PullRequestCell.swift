@@ -25,21 +25,31 @@ class PullRequestCell: UITableViewCell {
     
     func fill(with pullRequest: PullRequestViewModel) {
         
+        
         titleLabelPullRequest.text = pullRequest.title
         bodyLabel.text = pullRequest.body
         
-        //createAtLabel.text = CSHelperDate.formatterBR.string(from: pullReq.createdAt)
+        
+        let util: Util = Util()
+        
+        createAtLabel.text = CSHelperDate.formatterBR.string(from: pullRequest.dataCreate)
         
         guard let owner = pullRequest.owner else {
             return
         }
+        
+        if owner.name.isEmpty {
+            GitHubClientRepository.getOwner(url: owner.url!) { (owner) in
+                self.userNameLabel.text = owner?.name ?? ""
+            }
+        }
+        
         userLoginLabel.text = owner.login
         
-       // userAvatarImage.setImage(url: owner.avatarUrl)
-        //CSHelpers.makeRounded(imageView: userAvatarImage)
+        userAvatarImage.image = util.downloaderImage(url: owner.avatarUrl)
+        CSHelpers.makeRounded(imageView: userAvatarImage)
         
-        
-       userAvatarImage.layer.cornerRadius = 10
+        userAvatarImage.layer.cornerRadius = 10
         
     }
     

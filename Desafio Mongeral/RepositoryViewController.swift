@@ -11,13 +11,11 @@ import UIKit
 
 class RepositoryViewController: UITableViewController {
     
+    var currentPage = 1
     
     let CELL_REPOSITORY = "cellRepository"
-    
     var searchResultRepo: SearchResultRepository?
-    
-     var listItemsRepository = [RepositoryViewModel]()
-    
+    var listItemsRepository = [RepositoryViewModel]()
     
     var cellSelectedRepo: RepositoryViewModel?
     
@@ -29,6 +27,7 @@ class RepositoryViewController: UITableViewController {
         
     }
  
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -38,43 +37,49 @@ class RepositoryViewController: UITableViewController {
         return 1
     }
     
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listItemsRepository.count
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_REPOSITORY, for: indexPath) as! RepositoryCell
         
-        let repository = listItemsRepository[indexPath.item]
+        let repository = listItemsRepository[indexPath.row]
         cell.fill(with: repository)
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.cellSelectedRepo = listItemsRepository[indexPath.item]
-        //self.performSegue(withIdentifier: "showPullRequest", sender: self)
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = listItemsRepository.count - 1
+        if indexPath.row == lastElement {
+            
+            if listItemsRepository.count < (searchResultRepo?.totalCount ?? 0) {
+                self.getListRepository()
+            }
+        }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPullRequest" {
             
-            let indexPath = self.tableView.indexPathForSelectedRow
-            
-            
-            
             let destination = segue.destination as! PullRequestViewController
-          
-            destination.urlPullRequest = self.listItemsRepository[(indexPath?.item)!].pullsUrlString
             
-        }
+            if let indexPath = tableView.indexPathForSelectedRow {
+              destination.urlPullRequest = self.listItemsRepository[indexPath.row].pullsUrlString
+            }
+         }
     }
     
     
     func prepareObjectView() {
         guard let resultListRepo = searchResultRepo?.items else {
-            NSLog(" Erro ao tentar constuir o resultado para a tela.")
+            AlertFun.ShowAlert(title: "Alerta", message: "Nenhum repositório encontrado!", in: self)
             return
         }
         
@@ -89,10 +94,14 @@ class RepositoryViewController: UITableViewController {
     
     func getListRepository() {
     
-    
-        GitHubClientRepository.getRepositories( completion: { result in
+        if self.listItemsRepository.count < (searchResultRepo?.totalCount ?? 0) {
+            currentPage += 1
+        }
+        
+        GitHubClientRepository.getRepositories(page: currentPage, completion: { result in
             guard let result = result else {
                 self.searchResultRepo = nil
+                AlertFun.ShowAlert(title: "Alerta", message: "Nenhum repositório encontrado!", in: self)
                 return
             }
             self.searchResultRepo = result

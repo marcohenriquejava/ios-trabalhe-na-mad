@@ -20,7 +20,6 @@ class Owner: Mappable {
 
     required init?(map: Map){}
     
-    
     func mapping(map: Map) {
         name <- map["name"]
         login <- map["login"]
@@ -28,13 +27,11 @@ class Owner: Mappable {
         url <- map["url"]
     }
     
-    
 }
 
 
 class OwnerViewModel {
     private var owner: Owner
-    
     
     init(owner: Owner) {
         self.owner = owner

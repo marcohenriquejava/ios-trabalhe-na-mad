@@ -9,6 +9,8 @@ target 'Desafio Mongeral' do
   
   # Mapear objetos JSON
   pod 'AlamofireObjectMapper', '~> 4.0'
+	
+  pod 'FontAwesomeKit.Swift'
 
   target 'Desafio MongeralTests' do
     inherit! :search_paths

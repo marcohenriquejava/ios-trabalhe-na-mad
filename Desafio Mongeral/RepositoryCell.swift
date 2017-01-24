@@ -19,29 +19,38 @@ class RepositoryCell: UITableViewCell {
     
     @IBOutlet weak var avatarImage: UIImageView!
     
+    @IBOutlet weak var iconForksLabel: UILabel!
+    @IBOutlet weak var iconStarsLabel: UILabel!
     
     
-    var repo: RepositoryViewModel!
+    var repository: RepositoryViewModel!
     
     
-    func fill(with repo: RepositoryViewModel) {
-        self.repo = repo
-        
+    func fill(with repository: RepositoryViewModel) {
+        self.repository = repository
         
         let util: Util = Util()
         
-        labelNameAuthor.text = repo.name
-        labelDescRepository.text = repo.description
         
-        labelCoutForks.text = repo.forks
-        labelCoutStars.text = repo.stars
+        labelNameRepository.text = repository.name
+        labelDescRepository.text = repository.description
         
-        guard let owner = repo.owner else {
+        labelCoutForks.text = repository.forks
+        labelCoutStars.text = repository.stars
+        
+        guard let owner = repository.owner else {
             return
         }
         
-        labelNameAuthor.text = owner.name
+        if owner.name.isEmpty {
+            GitHubClientRepository.getOwner(url: owner.url!) { (owner) in
+                self.labelNameAuthor.text = owner?.name ?? ""
+            }
+        }
+        
         avatarImage.image = util.downloaderImage(url: owner.avatarUrl)
+        
+        CSHelpers.makeRounded(imageView: avatarImage)
         avatarImage.layer.cornerRadius = 10
         
     }

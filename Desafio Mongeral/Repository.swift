@@ -26,7 +26,6 @@ class Repository: Mappable {
     required init?(map: Map){}
     
     func mapping(map: Map) {
-        
         nameRepository <- map["name"]
         descRepository <- map["description"]
         fullNameRepository <- map["full_name"]
@@ -40,14 +39,12 @@ class Repository: Mappable {
 }
 
 
-
 class RepositoryViewModel {
     private var repository: Repository
     
     init(repository: Repository) {
         self.repository = repository
     }
-    
     
     var description:String {
         return repository.descRepository ?? ""

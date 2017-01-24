@@ -13,7 +13,6 @@ import ObjectMapper
 
 class PullRequestRepository: Mappable {
     
-    
     var title: String?
     var body: String?
     var dataCreate: String?
@@ -56,9 +55,9 @@ class PullRequestViewModel {
     }
 
     
-    /*var dataCreate:Date {
+    var dataCreate:Date {
         return CSHelperDate.timestampFormatter.date(from: pullRequestRepository.dataCreate!)!
-    }*/
+    }
     
     var owner:OwnerViewModel? {
         guard let owner = pullRequestRepository.owner else {
